@@ -1,0 +1,232 @@
+/* ==========================================================================
+   СБРОС СТИЛЕЙ И ПЕРЕМЕННЫЕ
+   ========================================================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-primary: #1a202c;
+    --color-muted: #4a5568;
+    --color-brand-dark: #1a365d;
+    --color-brand-light: #ebf8ff;
+    --color-accent: #d69e2e;
+    --color-white: #ffffff;
+    --color-bg-main: #f7fafc;
+
+    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    --max-width: 1100px;
+    --radius: 8px;
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--color-bg-main);
+    color: var(--color-primary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   ДОСТУПНОСТЬ: SKIP LINK
+   ========================================================================= */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    z-index: 9999;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--color-primary);
+}
+
+main:focus {
+    outline: none;
+}
+
+/* ==========================================================================
+   ИНТЕРАКТИВНАЯ ШАПКА (Header с поддержкой динамического фона)
+   ========================================================================= */
+.site-header {
+    /* Линейный градиент поверх фонового рисунка гарантирует читаемость текста при любых обложках */
+    background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.95)), var(--color-brand-dark);
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white);
+    padding: 5rem 0;
+    text-align: center;
+    transition: var(--transition); /* Плавное проявление фонового рисунка */
+}
+
+.header-container h1 {
+    font-size: 2.6rem;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+    transition: var(--transition);
+}
+
+.header-container p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   НАВИГАЦИЯ (Flexbox)
+   ========================================================================= */
+.main-navigation {
+    background-color: var(--color-white);
+    border-bottom: 2px solid #edf2f7;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-navigation a {
+    display: block;
+    padding: 1.2rem 2rem;
+    color: var(--color-brand-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.main-navigation a:hover, .main-navigation a:focus {
+    color: var(--color-accent);
+    background-color: var(--color-brand-light);
+    outline: none;
+}
+
+/* ==========================================================================
+   СЕТКА КАРТОЧЕК (CSS Grid)
+   ========================================================================= */
+.content-container {
+    padding: 3rem 0;
+    flex-grow: 1;
+}
+
+.book-section {
+    margin-bottom: 3.5rem;
+}
+
+.book-section h2 {
+    font-size: 1.6rem;
+    color: var(--color-brand-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 0.5rem;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+/* Интерактивная карточка */
+.book-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    display: flex;
+    gap: 1.5rem;
+    align-items: start;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid #edf2f7;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    border-color: var(--color-accent);
+}
+
+.cover-wrapper {
+    flex-shrink: 0;
+}
+
+.book-cover {
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 110px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.book-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.book-info .author {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.book-info .description {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   ПОДВАЛ И АДАПТИВНОСТЬ
+   ========================================================================= */
+.site-footer {
+    background-color: var(--color-brand-dark);
+    color: var(--color-white);
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 4px solid var(--color-accent);
+}
+
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+    .book-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

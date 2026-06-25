@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная Литературная Галерея</title>
+    <meta name="description" content="Оригинальный сайт-галерея с интерактивным обновлением DOM элементов при помощи JavaScript.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Перейти к основному контенту</a>
+
+    <header class="site-header" id="dynamic-header">
+        <div class="container header-container">
+            <h1 id="header-title">📚 Литературный Дневник</h1>
+            <p id="header-desc">Коллекция произведений, которые оставили след в моей жизни</p>
+        </div>
+    </header>
+
+    <nav class="main-navigation" aria-label="Основное меню сайта">
+        <div class="container nav-container">
+            <ul>
+                <li><a href="#fiction">Художественная</a></li>
+                <li><a href="#nonfiction">Нон-фикшн</a></li>
+                <li><a href="#biography">Биографии</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content" tabindex="-1">
+        <div class="container content-container">
+
+            <section id="fiction" class="book-section" aria-labelledby="heading-fiction">
+                <h2 id="heading-fiction">Художественная литература</h2>
+                <div class="books-grid">
+                    
+                    <article class="book-card" 
+                             onmouseover="upDate(this)" 
+                             onmouseout="unDo()">
+                        <div class="cover-wrapper">
+                            <img src="https://picsum.photos/240/350?random=1" 
+                                 alt="Обложка Мастер и Маргарита" 
+                                 class="book-cover">
+                        </div>
+                        <div class="book-info">
+                            <h3>«Мастер и Маргарита»</h3>
+                            <p class="author">Михаил Булгаков</p>
+                            <p class="description">Бессмертный шедевр, сочетающий в себе искрометную сатиру, глубокую философию и великую историю любви.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="book-card" 
+                             onmouseover="upDate(this)" 
+                             onmouseout="unDo()">
+                        <div class="cover-wrapper">
+                            <img src="https://picsum.photos/240/350?random=2" 
+                                 alt="Обложка 1984" 
+                                 class="book-cover">
+                        </div>
+                        <div class="book-info">
+                            <h3>«1984»</h3>
+                            <p class="author">Джордж Оруэлл</p>
+                            <p class="description">Главная антиутопия XX века, исследующая природу тоталитаризма и абсолютного контроля власти над личностью.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="nonfiction" class="book-section" aria-labelledby="heading-nonfiction">
+                <h2 id="heading-nonfiction">Научно-популярная литература</h2>
+                <div class="books-grid">
+                    
+                    <article class="book-card" 
+                             onmouseover="upDate(this)" 
+                             onmouseout="unDo()">
+                        <div class="cover-wrapper">
+                            <img src="https://picsum.photos/240/350?random=3" 
+                                 alt="Обложка Sapiens" 
+                                 class="book-cover">
+                        </div>
+                        <div class="book-info">
+                            <h3>«Sapiens»</h3>
+                            <p class="author">Юваль Ной Харари</p>
+                            <p class="description">Краткая история человечества от невзрачных приматов до хозяев планеты, меняющая взгляд на мир.</p>
+                        </div>
+                    </article>
+
+                    <article class="book-card" 
+                             onmouseover="upDate(this)" 
+                             onmouseout="unDo()">
+                        <div class="cover-wrapper">
+                            <img src="https://picsum.photos/240/350?random=4" 
+                                 alt="Обложка Думай медленно... Решай быстро" 
+                                 class="book-cover">
+                        </div>
+                        <div class="book-info">
+                            <h3>«Думай медленно... Решай быстро»</h3>
+                            <p class="author">Даниэль Канеман</p>
+                            <p class="description">Уникальный разбор работы нашего разума: систем интуитивного «быстрого» и рационального «медленного» мышления.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Литературный Дневник. Все права защищены.</p>
+            <p>Интерактивная галерея: JS + DOM + CSS Grid</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
